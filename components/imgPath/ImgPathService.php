@@ -1,13 +1,19 @@
 <?php
 
-namespace components\imgPathCalculator;
+namespace components\imgPath;
 
-class ImgPathCalculatorService
+class ImgPathService
 {
-    protected static function getWebDirPath(): string
+    public static function getWebDirPath(): string
     {
         $ds = DIRECTORY_SEPARATOR;
         return dirname(__DIR__, 2) . $ds . 'web';
+    }
+
+    public function getPostImgsPath(): string
+    {
+        $ds = DIRECTORY_SEPARATOR;
+        return self::getWebDirPath() . $ds . 'post-img';
     }
 
     public function pathToUrl(string $path): string

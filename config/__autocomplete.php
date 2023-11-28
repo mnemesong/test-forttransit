@@ -21,7 +21,8 @@ class Yii {
 /**
  * @property yii\rbac\DbManager $authManager 
  * @property \yii\web\User|__WebUser $user
- * @property \components\imgPathCalculator\ImgPathCalculatorService $imgPthCalculatorService
+ * @property \components\imgPath\ImgPathService $imgPathService
+ * @property \Pantagruel74\Yii2Seeder\SeederManager $seederManager
  */
 class __Application {
 }

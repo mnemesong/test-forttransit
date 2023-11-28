@@ -3,7 +3,6 @@
 namespace db\records;
 
 use components\postSearchService\records\AuthorRecInterface;
-use components\postSearchService\records\PostCategoryRecInterface;
 use components\postSearchService\records\PostRecInterface;
 use Webmozart\Assert\Assert;
 use yii\db\ActiveQueryInterface;

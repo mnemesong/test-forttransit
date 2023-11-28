@@ -9,7 +9,8 @@
         "php": ">=7.4.0",
         "yiisoft/yii2": "~2.0.45",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
-        "pantagruel74/yii2-controllers": "*"
+        "pantagruel74/yii2-controllers": "^0.3",
+        "pantagruel74/yii2-seeder": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
