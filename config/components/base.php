@@ -13,4 +13,6 @@ return [
         ],
     ],
     'db' => include __DIR__ . $ds . 'db' . $ds . 'prod.php',
+    'imgPthCalculatorService' => fn() =>
+        new \components\imgPathCalculator\ImgPathCalculatorService(),
 ];

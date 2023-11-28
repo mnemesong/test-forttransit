@@ -13,6 +13,7 @@
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-gii": "~2.2.0",
         "phpunit/phpunit": "~9.5.0",
         "pantagruel74/yii2-test-app": "*",
         "phpstan/phpstan": "*"
@@ -42,7 +43,8 @@
         "psr-4": {
             "Pantagruel74\\TestUnit\\": "test-unit/",
             "app\\": "app/",
-            "components\\": "components/"
+            "components\\": "components/",
+            "db\\": "db/"
         }
     },
     "extra": {

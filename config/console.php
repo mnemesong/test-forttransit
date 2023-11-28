@@ -7,6 +7,14 @@ $config = array_merge(
         'controllerNamespace' => 'app\controllers\console',
         'components' => include __DIR__ . $ds . 'components' . $ds . 'console.php',
         'params' => include __DIR__ . $ds . 'params' . $ds . 'console.php',
+        'controllerMap' => [
+            'migrate' => [
+                'class' => 'yii\console\controllers\MigrateController',
+                'migrationTable' => 'migrations',
+                'migrationPath' => dirname(__DIR__, 1) . $ds
+                    . 'db' . $ds . 'migrations',
+            ],
+        ],
     ]
 );
 
