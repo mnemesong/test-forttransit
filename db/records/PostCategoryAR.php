@@ -3,6 +3,7 @@
 namespace db\records;
 
 use components\postSearchService\records\PostCategoryRecInterface;
+use components\validators\UuidValidator;
 use yii\db\ActiveRecord;
 
 /**
@@ -13,6 +14,15 @@ use yii\db\ActiveRecord;
 class PostCategoryAR extends ActiveRecord implements
     PostCategoryRecInterface
 {
+    public function rules(): array
+    {
+        return [
+            [['id', 'name', 'description'], 'required'],
+            ['id', UuidValidator::class],
+            ['name', 'string', 'max' => 255],
+        ];
+    }
+
     public static function tableName(): string
     {
         return '{{%post_categories}}';

@@ -4,6 +4,7 @@ namespace db\records;
 
 use components\postSearchService\records\AuthorRecInterface;
 use components\postSearchService\records\PostRecInterface;
+use components\validators\UuidValidator;
 use Webmozart\Assert\Assert;
 use yii\db\ActiveQueryInterface;
 use yii\db\ActiveRecord;
@@ -22,6 +23,23 @@ use yii\db\ActiveRecord;
 class PostAR extends ActiveRecord implements
     PostRecInterface
 {
+    public function rules(): array
+    {
+        return [
+            [[
+                'id',
+                'title',
+                'announce',
+                'imgPath',
+                'text',
+                'authorId'
+            ], 'required'],
+            [['title', 'imgPath'], 'string', 'max' => 255],
+            ['announce', 'string', 'max' => 1024],
+            [['id', 'authorId'], UuidValidator::class],
+        ];
+    }
+
     public static function tableName(): string
     {
         return '{{%posts}}';

@@ -3,6 +3,7 @@
 namespace db\records;
 
 use components\postSearchService\records\AuthorRecInterface;
+use components\validators\UuidValidator;
 use Webmozart\Assert\Assert;
 use yii\db\ActiveRecord;
 
@@ -18,6 +19,16 @@ class AuthorAR extends ActiveRecord implements
     public static function tableName(): string
     {
         return '{{%authors}}';
+    }
+
+    public function rules(): array
+    {
+        return [
+            [['id', 'fullName', 'birthDate', 'biography'], 'required'],
+            ['id', UuidValidator::class],
+            [['fullName', 'biography'], 'string', 'max' => 255],
+            ['birthDate', 'date', 'format' => 'Y-m-d'],
+        ];
     }
 
     public function getId(): string
