@@ -3,27 +3,27 @@
 namespace app\controllers\web;
 
 use components\postSearchService\request\PostReqDto;
-use Pantagruel74\Yii2Controllers\WebController;
 use Webmozart\Assert\Assert;
 use yii\web\Controller;
 use yii\web\Request;
 use yii\web\Response;
 
 /* @property Request $request */
-class PostSearchController extends WebController
+class PostSearchController extends Controller
 {
-    public function permissions(): array
-    {
-        return [
-            'index' => ['*'],
-        ];
-    }
 
     public function actionIndex(): Response
     {
-        $req = $this->buildPostSearchRequestDto();
-        $resp = \Yii::$app->postSearchService->searchPosts($req);
-        return $this->asJson($resp->preSerialize());
+        try {
+            $req = $this->buildPostSearchRequestDto();
+            $resp = \Yii::$app->postSearchService->searchPosts($req);
+            return $this->asJson($resp->preSerialize());
+        } catch (\Throwable $t) {
+            return $this->asJson((object) [
+                'error' => $t->getMessage(),
+                'details' => $t->__toString(),
+            ]);
+        }
     }
 
     protected function buildPostSearchRequestDto(): PostReqDto

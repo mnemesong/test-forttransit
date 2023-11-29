@@ -2,22 +2,11 @@
 
 namespace app\controllers\web;
 
-use Pantagruel74\Yii2Controllers\WebController;
+use yii\web\Controller;
+use yii\web\Response;
 
-class SiteController extends WebController
+class SiteController extends Controller
 {
-
-    /**
-     * @return \string[][]
-     */
-    public function permissions(): array
-    {
-        return [
-            'index' => ['*'],
-            'about' => ['*'],
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -34,19 +23,11 @@ class SiteController extends WebController
         ];
     }
 
-    /**
-     * @return string
-     */
-    public function actionIndex(): string
+    public function actionIndex(): Response
     {
-        return $this->render('index');
+        return $this->asJson((object) [
+            'error' => 'Index page is not allowed in this server'
+        ]);
     }
 
-    /**
-     * @return string
-     */
-    public function actionAbout(): string
-    {
-        return $this->render('about');
-    }
 }

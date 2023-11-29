@@ -34,9 +34,6 @@ return array_merge(
             'rules' => [
             ],
         ],
-        'startPageStrategy' => [
-            'class' => \components\startPageStrategy\StartPageStrategy::class,
-        ],
         'postSearchService' => fn() =>
             new \components\postSearchService\PostSearchService(
                 new \db\postSearch\PostDbManager()
