@@ -40,7 +40,7 @@ class PostAR extends ActiveRecord implements
 
     public function getImgUrl(): string
     {
-        return \Yii::$app->imgPthCalculatorService->pathToUrl($this->imgPath);
+        return \Yii::$app->imgPathService->pathToUrl($this->imgPath);
     }
 
     public function getAnnounce(): string
@@ -55,7 +55,7 @@ class PostAR extends ActiveRecord implements
 
     public function getAuthorRecord(): ActiveQueryInterface
     {
-        return $this->hasOne(AuthorAR::class, ['id', 'authorId']);
+        return $this->hasOne(AuthorAR::class, ['id' => 'authorId']);
     }
 
     public function getAuthor(): AuthorRecInterface

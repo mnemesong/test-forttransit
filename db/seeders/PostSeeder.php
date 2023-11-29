@@ -41,7 +41,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'id' => self::RUSLAN_AND_LUDMILA_ID,
-                'title' => 'Рустал и Людмила',
+                'title' => 'Руслан и Людмила',
                 'imgPath' => \Yii::$app->imgPathService->getPostImgsPath()
                     . $ds . 'pushkin_default.jpg',
                 'announce' => '«Русла́н и Людми́ла» — первая законченная поэма '

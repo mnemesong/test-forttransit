@@ -11,4 +11,5 @@ interface AuthorRecInterface
     public function getBirthDate(): \DateTime;
 
     public function getBiography(): string;
+
 }

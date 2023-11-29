@@ -23,6 +23,7 @@ class Yii {
  * @property \yii\web\User|__WebUser $user
  * @property \components\imgPath\ImgPathService $imgPathService
  * @property \Pantagruel74\Yii2Seeder\SeederManager $seederManager
+ * @property \components\postSearchService\PostSearchService $postSearchService
  */
 class __Application {
 }

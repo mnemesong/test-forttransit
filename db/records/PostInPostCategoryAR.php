@@ -21,6 +21,6 @@ class PostInPostCategoryAR extends ActiveRecord
     public function getCategoryRecords(): ActiveQueryInterface
     {
         return $this
-            ->hasMany(PostCategoryAR::class, ['id', 'postCategoryId']);
+            ->hasMany(PostCategoryAR::class, ['id' => 'postCategoryId']);
     }
 }

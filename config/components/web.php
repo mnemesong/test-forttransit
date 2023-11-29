@@ -36,6 +36,10 @@ return array_merge(
         ],
         'startPageStrategy' => [
             'class' => \components\startPageStrategy\StartPageStrategy::class,
-        ]
+        ],
+        'postSearchService' => fn() =>
+            new \components\postSearchService\PostSearchService(
+                new \db\postSearch\PostDbManager()
+            ),
     ]
 );
