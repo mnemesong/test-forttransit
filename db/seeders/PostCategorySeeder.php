@@ -3,10 +3,9 @@
 namespace db\seeders;
 
 use db\records\PostCategoryAR;
-use Pantagruel74\Yii2Seeder\Seeder;
 use yii\db\ActiveRecordInterface;
 
-class PostCategorySeeder extends Seeder
+class PostCategorySeeder extends AbstractSeeder
 {
     const PROSE_ID = '77577f93-4935-49f6-ae7e-7b1ba3c8e3de';
     const POETRY_ID = 'ba651857-a655-40c5-b1e9-db7dd90e5de6';

@@ -1,4 +1,9 @@
 version: '2'
+
+networks:
+  default:
+    driver: bridge
+
 services:
   php:
     image: yiisoftware/yii2-php:7.4-apache
@@ -7,6 +12,9 @@ services:
       - ./:/app:delegated
     ports:
       - '80:80'
+    networks:
+      - default
+
   mysql:
     image: mysql:5.6
     env_file: .env
@@ -15,3 +23,11 @@ services:
     volumes:
       - ./.db:/var/lib/mysql
     command: [ 'mysqld', '--character-set-server=utf8', '--collation-server=utf8_general_ci' ]
+    networks:
+      - default
+    expose:
+      - '3306'
+
+  composer:
+    image: composer/composer
+

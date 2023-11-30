@@ -3,10 +3,9 @@
 namespace db\seeders;
 
 use db\records\PostInPostCategoryAR;
-use Pantagruel74\Yii2Seeder\Seeder;
 use yii\db\ActiveRecordInterface;
 
-class PostInPostCategorySeeder extends Seeder
+class PostInPostCategorySeeder extends AbstractSeeder
 {
 
     public function data(): array

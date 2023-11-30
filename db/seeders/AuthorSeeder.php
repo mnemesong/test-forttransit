@@ -3,10 +3,9 @@
 namespace db\seeders;
 
 use db\records\AuthorAR;
-use Pantagruel74\Yii2Seeder\Seeder;
 use yii\db\ActiveRecordInterface;
 
-class AuthorSeeder extends Seeder
+class AuthorSeeder extends AbstractSeeder
 {
     const TOLSTOY_ID = '4a53c7c1-6a11-46d1-b934-30f007c99d1a';
     const PUSHKIN_ID = '327b7325-daa9-4429-9df0-5ac244c76f6a';

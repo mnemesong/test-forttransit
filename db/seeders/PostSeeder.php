@@ -3,10 +3,9 @@
 namespace db\seeders;
 
 use db\records\PostAR;
-use Pantagruel74\Yii2Seeder\Seeder;
 use yii\db\ActiveRecordInterface;
 
-class PostSeeder extends Seeder
+class PostSeeder extends AbstractSeeder
 {
     const I_HAD_LOVED_YOU_ID = '6df5e93f-7b8b-4808-b070-8c33f30a11ed';
     const RUSLAN_AND_LUDMILA_ID = 'f2e9bb64-b478-45ab-9916-616b614ba870';

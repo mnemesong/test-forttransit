@@ -26,7 +26,7 @@ class AuthorAR extends ActiveRecord implements
         return [
             [['id', 'fullName', 'birthDate', 'biography'], 'required'],
             ['id', UuidValidator::class],
-            [['fullName', 'biography'], 'string', 'max' => 255],
+            ['fullName', 'string', 'max' => 255],
             ['birthDate', 'date', 'format' => 'Y-m-d'],
         ];
     }

@@ -1,7 +1,7 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=forttransit',
+    'dsn' => 'mysql:host=127.0.0.1;dbname=forttransit',
     'username' => 'forttransit',
     'password' => 'forttransit',
     'charset' => 'utf8',
