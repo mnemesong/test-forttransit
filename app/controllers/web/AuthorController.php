@@ -4,10 +4,18 @@ namespace app\controllers\web;
 
 use db\records\AuthorAR;
 use yii\rest\ActiveController;
+use yii\web\Response;
 
 class AuthorController extends ActiveController
 {
     public $modelClass = AuthorAR::class;
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['contentNegotiator']['formats']['text/html'] = Response::FORMAT_JSON;
+        return $behaviors;
+    }
 
     public function actions()
     {

@@ -4,10 +4,18 @@ namespace app\controllers\web;
 
 use db\records\PostCategoryAR;
 use yii\rest\ActiveController;
+use yii\web\Response;
 
 class CategoryController extends ActiveController
 {
     public $modelClass = PostCategoryAR::class;
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['contentNegotiator']['formats']['text/html'] = Response::FORMAT_JSON;
+        return $behaviors;
+    }
 
     public function actions()
     {

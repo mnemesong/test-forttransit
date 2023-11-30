@@ -4,10 +4,18 @@ namespace app\controllers\web;
 
 use db\records\PostAR;
 use yii\rest\ActiveController;
+use yii\web\Response;
 
 class PostController extends ActiveController
 {
     public $modelClass = PostAR::class;
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['contentNegotiator']['formats']['text/html'] = Response::FORMAT_JSON;
+        return $behaviors;
+    }
 
     public function actions()
     {
