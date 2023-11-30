@@ -1,40 +1,158 @@
-# Yii2 app skeleton
+# PORT-TRANSIT TEST 
 
-## Requirements
+
+## Описание
+Тестовое задание для компании "Порт-транзит"
+
+
+## Развернутая версия
+Развернутая версия проекта размещена по url `http://79.174.83.32/`.
+Полностью рабочая, можно использовать API точки, что описаны ниже
+
+
+## Системные требования
 
 1. PHP >=7.4
 2. Composer >=2.0
 3. Apache or NGINX server
+4. Mysql v 5.6+
 
-or
-
+или возможно
 1. Docker engine v 4.0+
 2. Docker-compose
 
 
-## Installation
+## Установка и инициализация
 
-### Apache+PHP
+### Apache+PHP (проверенно)
 
 1. Copy project files to target folder
-2. Run command "composer update"
+2. Run command `composer update`
+3. Run command `php yii migrate`
+4. Run command `php yii seed/all`
 
 
-### Docker compose
+### Docker compose (не проверенно)
 
 1. Run command `docker-compose run --rm php composer install`
 2. Run command `chmod 755 yii`
 3. Run command `chmod 777 web && chmod 777 web/*`
 4. Run command `chmod 777 runtime`
 5. Run container by command `docker-compose up -d`
+6. Run command `docker-compose run php ./yii migrate` (add `-- -f` flag for force migration in autodeploy scripts)
+7. Run command `docker-compose run php ./yii seed/all`
 
 
-## License
+## API-точки
 
-- MIT
+#### /post-search
+Точка для получения полной информации о статьях, в агрегированном виде,
+включающих в себя информацию о категориях и авторе
+
+###### Формат ответа
+```json
+{
+  "id":"332a446c-4736-4df9-8d56-04b1a672561f",
+  "title":"Война и мир",
+  "announce":"«Война́ и мир» — роман-эпопея...",
+  "imgUrl":"/post-imgs/tolstoy_default.jpg",
+  "text":" Друзья князь и граф искали смысл...",
+  "author": {
+    "id":"4a53c7c1-6a11-46d1-b934-30f007c99d1a",
+    "fullName":"Лев Николаевич Толстой",
+    "birthDate":"1828-09-09",
+    "biography":"Граф Лев Николаевич Толстой (28 августа 1828..."
+  },
+  "categories":[
+    {
+      "id":"2aad851e-b6ac-4d44-ac9e-182d4ab001bd",
+      "name":"Роман",
+      "description":"Роман — это литературный жанр, чаще ..."
+    }
+  ]
+}
+```
+
+###### Формат запроса
+Запросы в формате GET с urlencoded параметрами в url строке
+Возможные парамтеры запроса:
+- `title` - подстрока, которую должено включать название статьи
+- `author` - ID автора
+- `category` - ID категории
+- `page` - Номер страницы для пагинации. Нумерация начинается с 0
+- `pageSize` - Кол-во статей на каждой странице. По умолчанию 20.
 
 
-## Author
+#### /post
+REST-API точка для сущности статей
+
+###### Формат ответа
+```json
+{
+  "id":"6df5e93f-7b8b-4808-b070-8c33f30a11ed",
+  "title":"Я вас любил: любовь еще, быть может…",
+  "imgPath":"/var/www/test.domain.tld/web/post-imgs/pushkin_default.jpg",
+  "announce":"«Я вас любил…» — стихотворение Александра Сергеевича...",
+  "text":"Я вас любил: любовь еще, быть может,<br>В душе моей ...",
+  "authorId":"327b7325-daa9-4429-9df0-5ac244c76f6a"
+}
+```
+
+###### Формат запроса
+Запросы в формате GET с urlencoded параметрами в url строке
+Возможные параметры:
+- `filter[Имя_Поля]=значение` - Фильтрация по значению для выбранного поля
+- `sort=<имя_поля/-имя_поля>` - Сортировка по полю по_возрастанию/по_убыванию
+
+
+#### /author
+REST-API точка для сущности авторов
+
+###### Формат ответа
+```json
+{
+  "id":"327b7325-daa9-4429-9df0-5ac244c76f6a",
+  "fullName":"Александр Сергеевич Пушкин",
+  "birthDate":"1799-05-26",
+  "biography":"Александр Сергеевич Пушкин (26 мая 1799..."
+}
+```
+
+###### Формат запроса
+Запросы в формате GET с urlencoded параметрами в url строке
+Возможные параметры:
+- `filter[Имя_Поля]=значение` - Фильтрация по значению для выбранного поля
+- `sort=<имя_поля/-имя_поля>` - Сортировка по полю по_возрастанию/по_убыванию
+
+
+###### Формат запроса
+Запросы в формате GET с urlencoded параметрами в url строке
+Возможные параметры:
+- `filter[Имя_Поля]=значение` - Фильтрация по значению для выбранного поля
+- `sort=<имя_поля/-имя_поля>` - Сортировка по полю по_возрастанию/по_убыванию
+
+
+#### /category
+REST-API точка для сущности категорий
+
+###### Формат ответа
+```json
+{
+  "id":"2aad851e-b6ac-4d44-ac9e-182d4ab001bd",
+  "name":"Роман",
+  "description":"Роман — это литературный жанр, чаще ..."
+}
+```
+
+###### Формат запроса
+Запросы в формате GET с urlencoded параметрами в url строке
+Возможные параметры:
+- `filter[Имя_Поля]=значение` - Фильтрация по значению для выбранного поля
+- `sort=<имя_поля/-имя_поля>` - Сортировка по полю по_возрастанию/по_убыванию
+
+
+
+## Автор
 
 - Anatoly Starodubtsev <Pantagruel74>
 - Tostar74@mail.ru
